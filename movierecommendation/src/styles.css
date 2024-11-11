@@ -1,0 +1,103 @@
+/* You can add global styles to this file, and also import other style files */
+html, body {height: 100%;}
+body {margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+/* Container for the entire page */
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #d6b9b9e8;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Styling for headers*/
+  
+  h2, h3 {
+    text-align: center;
+    color: black;
+    margin-bottom: 20px;
+  }
+  /*search bar*/
+  input[type="text"] {
+    width: calc(100% - 90px);
+    padding: 8px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+ /*all buttons*/ 
+  button {
+    padding: 8px 12px;
+    background-color: #28a745;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  button:hover {
+    background-color: #218838;
+  }
+  /*list to display the trailers*/ 
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  li {
+    margin-bottom: 10px;
+  }
+  /*video title link */
+  li a {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+  }
+  
+  li a:hover {
+    text-decoration: underline;
+  }
+  /*input fields used with ngModel */
+  input[ngModel] {
+    width: calc(100% - 90px);
+    padding: 8px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  /* Add space between buttons, was a bit complicated on html*/
+  button + button {
+    margin-left: 10px;
+  }
+  /* Specific for the delete button */
+  button.delete {
+    background-color: #dc3545;
+  }
+  
+  button.delete:hover {
+    background-color: #c82333;
+  }
+  /*result*/
+  .result-item {
+    display: flex;              
+    align-items: center;       
+    margin-bottom: 15px;        
+  }
+  /*thumbnail*/
+  .thumbnail {
+    width: 120px;           
+    height: auto;            
+    margin-right: 10px;      
+  }
+  
+
+  
+  

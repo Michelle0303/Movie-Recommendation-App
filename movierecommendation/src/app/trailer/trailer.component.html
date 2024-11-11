@@ -1,0 +1,57 @@
+<button mat-button [matMenuTriggerFor]="menu">Menu</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item routerLink="/home">Homepage</button>
+  <button mat-menu-item routerLink="/moviedb">Movie Database</button>
+  <button mat-menu-item routerLink="/recommendation">Recommendation Engine</button>
+  <button mat-menu-item routerLink="/reviews">Reviews</button>
+  <button mat-menu-item routerLink="/trailer">Trailer</button>
+</mat-menu>
+
+<div class="container">
+  <h2>YouTube Trailer Integration</h2>
+
+  <!-- YouTube trailers search -->
+  <div class="search-section">
+    <input 
+      type="text" 
+      placeholder="Search for trailers on YouTube" 
+      #searchQuery 
+      (keyup.enter)="searchTrailers(searchQuery.value)" 
+    />
+    <button (click)="searchTrailers(searchQuery.value)">Search Trailers</button>
+  </div>
+
+  <!-- Display YouTube search results with add button for each result -->
+  <div *ngIf="trailers.length > 0" class="results-section">
+    <h3>Search Results</h3>
+    <ul>
+      <li *ngFor="let trailer of trailers" class="result-item">
+        <img [src]="trailer.snippet.thumbnails.default.url" alt="{{ trailer.snippet.title }}" class="thumbnail" />
+        <a [href]="'https://www.youtube.com/watch?v=' + trailer.id.videoId" target="_blank" class="video-link">
+          {{ trailer.snippet.title }}
+        </a>
+        <!-- Add Trailer button for each search result -->
+        <button (click)="addTrailer(trailer.id.videoId, trailer.snippet.title)">Add Trailer</button>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Saved Trailers Section -->
+  <div *ngIf="savedTrailers.length > 0" class="saved-trailers-section">
+    <h3>Saved Trailers</h3>
+    <ul>
+      <li *ngFor="let savedTrailer of savedTrailers" class="saved-item">
+        <span class="saved-title">{{ savedTrailer.title }}</span>
+        <div class="button-group">
+          <button (click)="editTrailer(savedTrailer)" class="edit-button">Edit</button>
+          <button (click)="deleteTrailer(savedTrailer.id)" class="delete-button">Delete</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Message if no trailers exist -->
+  <div *ngIf="trailers.length === 0 && !trailerExists">
+    <p>No trailers available. Please add or search for a trailer.</p>
+  </div>
+</div>
