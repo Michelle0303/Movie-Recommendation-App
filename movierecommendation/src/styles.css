@@ -4,10 +4,21 @@ body {margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;}
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+body {
+  background-image: url('./assets/img/bgpic.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* Temporarily comment these out */
+  background-color: rgba(255, 255, 255, 0.5); 
+  background-blend-mode: overlay; 
+}
+
+
 
 /* Container for the entire page */
 .container {
-    max-width: 600px;
+    max-width: 800px;
     margin: 0 auto;
     padding: 20px;
     font-family: Arial, sans-serif;
@@ -18,7 +29,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
   /* Styling for headers*/
   
-  h2, h3 {
+  h1, h2, h3 {
     text-align: center;
     color: black;
     margin-bottom: 20px;
@@ -99,5 +110,140 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   }
   
 
+  .edit-form {
+    max-width: 400px;
+    margin: auto;
+    background-color: #f7eaea;
+    padding: 20px;
+    border-radius: 8px;
+  }
+
+  .rec-form{    
+    max-width: 600px;
+    margin: auto;
+    background-color: #f7eaea;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  .rec-form div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .rec-form label {
+    width: 200px; /* Adjust width to control label size */
+    font-weight: bold;
+  }
+  
+  .rec-form select {
+    width: 250px; /* Reduce the width of the dropdown */
+    padding: 6px; /* Adjust padding for smaller size */
+    border-radius: 4px;
+    margin-left: 30px;
+    border: 1px solid;
+    text-align: justify; /* Align text inside the dropdown to the left */
+  }
+
+  .review-form {
+    max-width: 700px;
+    margin: auto;
+    background-color: #f7eaea;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  .review-form textarea {
+    width: 68%;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 8px;
+    box-sizing: border-box; /* Ensures padding doesn't overflow */
+    background-color: #fff; /* Make it white like the input */
+    resize: vertical; /* Allows the user to resize it vertically */
+  }
+  
+
+  .form-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  .form-group label {
+    width: 30%;
+    font-weight: bold;
+    margin-right: 10px;
+  }
+
+  .form-group input {
+    width: 65%;
+    padding: 5px;
+  }
+
+  .form-group select {
+    width: 68%;
+    padding: 7px;
+ 
+  }  
+  .save-button, .cancel-button {
+    padding: 8px 12px;
+    margin: 10px 5px 0 0;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .save-button {
+    background-color: #28a745;
+  }
+  .delete-button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .cancel-button {
+    background-color: #dc3545;
+  }
+  
+  button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+
+  .save-button:hover, .cancel-button:hover {
+    opacity: 0.9;
+  }
+  .rating-options {
+    display: flex;
+    gap: 12px; /* Adds spacing between the radio buttons */
+    align-items: left;
+    justify-content: left; /* Centers the radio buttons horizontally */
+    width: 50%; /* Restricts the width to 80% of the parent container */
+    margin: auto; /* Centers the element horizontally within its parent */
+  }
+  
+  .rating-options label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  
+  .rating-options input[type="radio"] {
+    margin-right: 5px; /* Space between the radio button and its label */
+  }
   
   
+  
+  
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

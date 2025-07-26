@@ -1,0 +1,90 @@
+<h1>Movie Recommendation System</h1>
+<app-navigation-menu></app-navigation-menu>
+
+<div class="container">
+  <h2>Recommendation Engine</h2>
+  <p>Please select a genre, director (optional), and a year range (optional):</p>
+
+  <form (ngSubmit)="savePreferences()" class="rec-form">
+    <div>
+      <label for="genre">Favorite Genre:</label>
+      <select id="genre" [(ngModel)]="userPreferences.genre" name="genre" required>
+        <option value="">Any Genre</option> 
+        <option *ngFor="let genre of genres" [value]="genre.id">{{ genre.name }}</option>
+      </select>
+    </div>
+    <div>
+      <label for="director">Favourite Director/ Film Maker:</label>
+      <select id="director" [(ngModel)]="userPreferences.director" name="director">
+        <option value="">Any Director</option>
+        <option *ngFor="let director of filteredDirectors" [value]="director.id">{{ director.name }}</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="startYear">Start Year:</label>
+      <select id="startYear" [(ngModel)]="userPreferences.startYear" name="startYear">
+        <option *ngFor="let year of yearList" [value]="year">{{ year }}</option>
+      </select>
+    </div>
+  
+    <div>
+      <label for="endYear">End Year:</label>
+      <select
+        id="endYear"
+        [(ngModel)]="userPreferences.endYear"
+        name="endYear"
+        [disabled]="!userPreferences.startYear"
+      >
+        <option *ngFor="let year of yearList" [value]="year" [disabled]="isYearDisabled(year)">
+          {{ year }}
+        </option>
+      </select>
+    </div>
+    <br>
+    
+  
+    <button type="submit" [disabled]="isPreferencesSaved || isInvalidYearRange || userPreferences.genre === null">
+      Save Preferences
+    </button>
+    
+    <button type="button" (click)="updatePreferences()" [disabled]="!isPreferencesSaved">Update Preferences</button>
+    <button type="button" (click)="deleteRecommendations()" [disabled]="recommendations.length === 0">
+      Delete Recommendations
+    </button>
+  </form>
+  <br>
+ 
+
+  <div *ngIf="userPreferences.director && userPreferences.director !== null">
+    <p><b>Credited Movies</b></p>
+  </div>
+  
+  <div class="movie-grid">
+    <div class="movie-card" *ngFor="let movie of paginatedMovies">
+      <img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" alt="{{ movie.title }} Poster" class="movie-poster" />
+      <p><b>{{ movie.title }}</b></p>
+      <p>
+        Genre:
+        <span *ngFor="let genreId of movie.genre; let last = last">
+          {{ getGenreName(genreId) }}<span *ngIf="!last">, </span>
+        </span>
+      </p>
+      <p>Release Year: {{ movie.release_year }}</p>
+      <p>
+        Directors:
+        <span *ngFor="let director of movie.directors; let last = last">
+          {{ director }}<span *ngIf="!last">, </span>
+        </span>
+      </p>
+    </div>
+  </div>
+
+  <div class="pagination">
+    <button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
+    <div class="pagination-info">
+      <p>Page {{ currentPage }} of {{ totalPages }}</p>
+    </div>
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+  </div>
+</div>

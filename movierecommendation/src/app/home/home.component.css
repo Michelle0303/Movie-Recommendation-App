@@ -1,0 +1,29 @@
+.movie-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .movie-item {
+    width: 200px;
+    text-align: center;
+  }
+  
+  .movie-item img {
+    width: 100%;
+    height: auto;
+  }
+
+  .container {
+    max-width: 880px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  @media (max-width: 768px) {
+    .container {
+      padding: 10px;  
+      max-width: 100%;  
+    }
+  }

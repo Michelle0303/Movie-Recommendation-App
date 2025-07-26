@@ -1,2 +1,40 @@
-<h1>Welcome </h1>
+<h1>Welcome to the Movie Recommendation App!</h1>
+<div class="background">
+
+</div>
 <app-navigation-menu></app-navigation-menu>
+<div class="container">
+ 
+    <!-- Welcome Section -->
+    <div class="welcome-section">
+
+      <p>Your go-to app for discovering and managing your favorite movies.</p>
+    </div>
+  
+    <!-- Featured Movies Section -->
+    <div>
+        <h2>Featured Movies</h2>
+        <div class="movie-list">
+          <div class="movie-item" *ngFor="let movie of featuredMovies">
+            <img [src]="movie.image" alt="{{movie.name}}" />
+            <h3>{{movie.name}}</h3>
+            <p>Genre: {{movie.genre}}</p>
+            <p>Year: {{movie.year}}</p>
+          </div>
+        </div>
+      </div>
+      
+  
+    <!-- Call to Action Section -->
+    <div class="cta-section">
+      <h2>Get Started</h2>
+      <p>Discover new movies, manage your collection, and share reviews with friends.</p>
+      <button  routerLink="/trailer">Browse Movies</button>
+      <button  routerLink="/recommendation">Start Recommendations</button>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+  </div>
+  

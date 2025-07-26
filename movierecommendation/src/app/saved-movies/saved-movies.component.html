@@ -1,0 +1,47 @@
+<h1>Movie Recommendation System</h1>
+<app-navigation-menu></app-navigation-menu>
+<div class="container">
+
+  <div *ngIf="savedTrailers.length > 0">
+    <h2>Saved Movies List</h2>
+    <ul>
+      <li *ngFor="let savedTrailer of savedTrailers" class="saved-item">
+        <a [href]="savedTrailer.trailerLink" target="_blank" class="saved-title">
+          {{ savedTrailer.movie_Name }}
+        </a>
+        <div class="button-group">
+          <button (click)="editTrailer(savedTrailer)" class="edit-button">Edit</button>
+          <button (click)="deleteTrailer(savedTrailer._id)" class="delete-button">Delete</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Editing form for selected trailer -->
+  <div *ngIf="editingTrailer" class="edit-form">
+    <h3>Edit Trailer</h3>
+    <div class="form-group">
+      <label for="movieName">Movie Name: </label>
+      <input id="movieName" [(ngModel)]="editingTrailer.movie_Name" placeholder="Movie Name" /><br>
+    </div>
+    <div class="form-group">
+      <label for="genres">Genres: </label>
+      <input id="genres" [(ngModel)]="editingTrailer.genres" placeholder="Genres (e.g., Comedy, Thriller, etc)" /><br>
+    </div>
+    <div class="form-group">
+      <label for="year">Year:</label>
+      <select id="year" [(ngModel)]="editingTrailer.Year" class="form-control">
+        <option *ngFor="let year of yearsList" [value]="year">{{ year }}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="author">Director: </label>
+      <input id="author" [(ngModel)]="editingTrailer.author" placeholder="Director" /><br>
+    </div>
+    <button type="button" class="save-button" (click)="saveTrailer(editingTrailer)">Save</button>
+    <button type="button" class="cancel-button" (click)="cancelEdit()">Cancel</button>
+  </div>
+
+  <p>Click button to browse and add more movies to list</p>
+  <button routerLink="/trailer">Browse Movies</button>
+</div>

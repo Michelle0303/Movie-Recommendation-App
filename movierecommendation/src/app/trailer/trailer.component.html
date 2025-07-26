@@ -1,24 +1,18 @@
-<button mat-button [matMenuTriggerFor]="menu">Menu</button>
-<mat-menu #menu="matMenu">
-  <button mat-menu-item routerLink="/home">Homepage</button>
-  <button mat-menu-item routerLink="/moviedb">Movie Database</button>
-  <button mat-menu-item routerLink="/recommendation">Recommendation Engine</button>
-  <button mat-menu-item routerLink="/reviews">Reviews</button>
-  <button mat-menu-item routerLink="/trailer">Trailer</button>
-</mat-menu>
+<h1>Movie Recommendation System</h1>
+
+<app-navigation-menu></app-navigation-menu>
+
+
 
 <div class="container">
-  <h2>YouTube Trailer Integration</h2>
+  <h2>Browse Movies</h2>
 
   <!-- YouTube trailers search -->
   <div class="search-section">
-    <input 
-      type="text" 
-      placeholder="Search for trailers on YouTube" 
-      #searchQuery 
-      (keyup.enter)="searchTrailers(searchQuery.value)" 
-    />
-    <button (click)="searchTrailers(searchQuery.value)">Search Trailers</button>
+    <input type="text" placeholder="Search for trailers on YouTube" 
+    #searchQuery 
+    (keyup.enter)="searchTrailers(searchQuery.value)" />
+    <button (click)="searchTrailers(searchQuery.value)">Search</button>
   </div>
 
   <!-- Display YouTube search results with add button for each result -->
@@ -30,28 +24,59 @@
         <a [href]="'https://www.youtube.com/watch?v=' + trailer.id.videoId" target="_blank" class="video-link">
           {{ trailer.snippet.title }}
         </a>
-        <!-- Add Trailer button for each search result -->
-        <button (click)="addTrailer(trailer.id.videoId, trailer.snippet.title)">Add Trailer</button>
+        <button (click)="addTrailer(trailer)">Add Trailer</button>
       </li>
     </ul>
-  </div>
+  </div><br><br>
 
-  <!-- Saved Trailers Section -->
+  <p>Click button to see your saved movies</p>
+  <button  routerLink="/saved-movies">Saved Movies</button>
+
+  <!--
+  <div>
+   Saved Trailers Section 
   <div *ngIf="savedTrailers.length > 0" class="saved-trailers-section">
     <h3>Saved Trailers</h3>
     <ul>
       <li *ngFor="let savedTrailer of savedTrailers" class="saved-item">
-        <span class="saved-title">{{ savedTrailer.title }}</span>
+        <span class="saved-title">{{ savedTrailer.movie_Name }}</span>
         <div class="button-group">
           <button (click)="editTrailer(savedTrailer)" class="edit-button">Edit</button>
-          <button (click)="deleteTrailer(savedTrailer.id)" class="delete-button">Delete</button>
+          <button (click)="deleteTrailer(savedTrailer._id)" class="delete-button">Delete</button>
         </div>
       </li>
+      
     </ul>
   </div>
 
-  <!-- Message if no trailers exist -->
-  <div *ngIf="trailers.length === 0 && !trailerExists">
-    <p>No trailers available. Please add or search for a trailer.</p>
+
+  Editing form for selected trailer 
+  <div *ngIf="editingTrailer" class="edit-form">
+    <h3>Edit Trailer</h3>
+    <div class="form-group">
+      <label for="movieName">Movie Name: </label>
+      <input id="movieName" [(ngModel)]="editingTrailer.movie_Name" placeholder="Movie Name" /><br>
+    </div>
+    <div class="form-group">
+      <label for="genres">Genres: </label>
+      <input id="genres" [(ngModel)]="editingTrailer.genres" placeholder="Genres (e.g., Comedy, Thriller, etc)" /><br>
+    </div>
+    <div class="form-group">
+      <label for="year">Year: </label>
+      <input id="year" [(ngModel)]="editingTrailer.Year" placeholder="Enter release Year" /><br>
+    </div>
+    <div class="form-group">
+      <label for="author">Director: </label>
+      <input id="author" [(ngModel)]="editingTrailer.author" placeholder="Director" /><br>
+    </div>
+    <div class="form-group">
+      <label for="ratings">Ratings: </label>
+      <input id="ratings" [(ngModel)]="editingTrailer.Ratings" placeholder="Rating (e.g., 8.5/10)" /><br>
+    </div>
+    
+    <button type="button" class="save-button" (click)="saveTrailer(editingTrailer)">Save</button>
+    <button type="button" class="cancel-button" (click)="cancelEdit()">Cancel</button>
   </div>
+</div>-->
+
 </div>
