@@ -55,13 +55,4 @@ ng e2e
 - `src/app/` – Angular components and logic
 - `package.json` – Project dependencies and scripts
 
-## ✍️ Customization Ideas
 
-To improve the recommendation engine, consider:
-- Collecting genre, mood, language, and platform preferences
-- Using collaborative filtering or external APIs
-- Tracking watch history and user feedback for smarter suggestions
-
-## 📄 License
-
-MIT License
